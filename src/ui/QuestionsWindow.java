@@ -2,16 +2,23 @@ package ui;
 
 import java.io.IOException;
 
+
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import model.Timer;
 
 public class QuestionsWindow extends Stage {
 	
 	//UI elements
 	private Label counterLbl;
+	
+	//References
+	private Timer timer;
+	private ScoresWindow scoresWindow;
 	
 	public QuestionsWindow() {
 		try {
@@ -32,8 +39,18 @@ public class QuestionsWindow extends Stage {
 	}
 
 	private void init() {
-		counterLbl.set
+		timer = new Timer(this);
+		timer.start();
 		
+	}
+	
+	public void tell(int time) {
+		Platform.runLater(
+				()-> {
+					//Is running in the UI Thread
+					counterLbl.setText(""+time);
+				}
+		);
 	}
 	
 }

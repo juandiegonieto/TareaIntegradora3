@@ -13,7 +13,14 @@ public class Timer extends Thread{
 	
 	@Override
 	public void run() {
-		
+		for(int i=30; i!=0; i--) {
+			try {
+				Thread.sleep(1000);
+				questionsWindow.tell(i);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 }
