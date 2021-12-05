@@ -6,15 +6,36 @@ public class NodeScore {
 	
 	private int key;
 	private ArrayList<Player> value;
-
-	//Links
+	
+	//Enlaces
 	private NodeScore left;
 	private NodeScore right;
+		
 	
 	public NodeScore(int key) {
 		this.key = key;
 		this.value = new ArrayList<>();
 	}
+	
+	public void insert(int newkey, String value) {
+		if(newkey<this.key) {
+			//insertar a la izquierda
+			if(this.left == null) {
+				this.left = new NodeScore(newkey);
+			}else {
+				this.left.insert(newkey, value);
+			}
+			
+		}else {
+			//insertar a la derecha
+			if(this.right == null) {
+				this.right = new NodeScore(newkey);
+			}else {
+				this.right.insert(newkey, value);
+			}
+		}
+	}
+	
 	public int getKey() {
 		return key;
 	}
@@ -28,25 +49,6 @@ public class NodeScore {
 		this.value = value;
 	}
 	
-	public void insert(int newKey, Player player) {
-		if(newKey<this.key) {
-			//insertar a la izquierda
-			if(this.left == null) {
-				this.left = new NodeScore(newKey);
-				this.left.getValue().add(player);
-			}else {
-				this.left.insert(newKey, player);
-			}
-			
-		}else if(newKey>this.key){
-			//insertar a la derecha
-			if(this.right == null) {
-				this.right = new NodeScore(newKey);
-				this.right.getValue().add(player); 
-			}else {
-				this.right.insert(newKey, player);
-			}
-		}
-	}
 	
+
 }
