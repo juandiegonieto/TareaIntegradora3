@@ -17,13 +17,13 @@ public class NodeScore {
 		this.value = new ArrayList<>();
 	}
 	
-	public void insert(int newkey, String value) {
+	public void insert(int newkey) {
 		if(newkey<this.key) {
 			//insertar a la izquierda
 			if(this.left == null) {
 				this.left = new NodeScore(newkey);
 			}else {
-				this.left.insert(newkey, value);
+				this.left.insert(newkey);
 			}
 			
 		}else {
@@ -31,7 +31,7 @@ public class NodeScore {
 			if(this.right == null) {
 				this.right = new NodeScore(newkey);
 			}else {
-				this.right.insert(newkey, value);
+				this.right.insert(newkey);
 			}
 		}
 	}
@@ -47,6 +47,22 @@ public class NodeScore {
 	}
 	public void setValue(ArrayList<Player> value) {
 		this.value = value;
+	}
+
+	public NodeScore getLeft() {
+		return left;
+	}
+
+	public void setLeft(NodeScore left) {
+		this.left = left;
+	}
+
+	public NodeScore getRight() {
+		return right;
+	}
+
+	public void setRight(NodeScore right) {
+		this.right = right;
 	}
 	
 	
