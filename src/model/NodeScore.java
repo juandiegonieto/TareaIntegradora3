@@ -30,7 +30,7 @@ public class NodeScore {
 	
 	public void insert(int newKey, Player player) {
 		if(newKey<this.key) {
-			//insertar a la izquierda
+			//Insert to the left
 			if(this.left == null) {
 				this.left = new NodeScore(newKey);
 				this.left.getValue().add(player);
@@ -39,7 +39,7 @@ public class NodeScore {
 			}
 			
 		}else if(newKey>this.key){
-			//insertar a la derecha
+			//Insert to the right
 			if(this.right == null) {
 				this.right = new NodeScore(newKey);
 				this.right.getValue().add(player); 

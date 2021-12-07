@@ -1,5 +1,6 @@
 package ui;
 
+import java.io.File;
 import java.io.IOException;
 
 import javafx.application.Platform;
@@ -10,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.ProgreesBarInit;
 
@@ -20,6 +23,7 @@ public class UserWindow extends Stage {
 	private TextField userTf;
 	private Button playBtn;
 	private Button exitBtn;
+	private ImageView logoIv;
 	
 	//References
 	private ProgreesBarInit progressBarInit;
@@ -35,8 +39,9 @@ public class UserWindow extends Stage {
 			userTf = (TextField) loader.getNamespace().get("userTf");
 			playBtn = (Button) loader.getNamespace().get("playBtn");
 			exitBtn = (Button) loader.getNamespace().get("exitBtn");
+			logoIv = (ImageView) loader.getNamespace().get("logoIv");
 			
-			
+			progressBar.setVisible(false);
 			
 			Scene scene = new Scene(root, 600, 400);
 			setScene(scene);
@@ -57,6 +62,7 @@ public class UserWindow extends Stage {
 	}
 	
 	private void init() {
+		
 		playBtn.setOnAction(event-> {
 			progressBarInit = new ProgreesBarInit(this);
 			progressBarInit.start();
@@ -70,6 +76,7 @@ public class UserWindow extends Stage {
 		Platform.runLater(
 				()-> {
 					//Is running in the UI Thread
+					progressBar.setVisible(true);
 					progressBar.setProgress(time);
 					
 				}
