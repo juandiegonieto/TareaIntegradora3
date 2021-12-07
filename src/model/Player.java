@@ -5,8 +5,8 @@ public class Player {
 	private int score;
 	private String username;
 	
-	public Player(int score, String username) {
-		this.score = score;
+	public Player(String username) {
+		score = 0;
 		this.username = username;
 	}
 	
