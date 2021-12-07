@@ -1,5 +1,10 @@
 package model;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 public class TreeController {
 
 	 /**
@@ -16,10 +21,15 @@ public class TreeController {
 	private operationRandom operations;
 	private TotalQuestionnaireTime time;
 	
+	private NameTree nodeName;
+	private ScoreTree scoreTree;
+	
 	public TreeController(String namePlayer) {
 		super();
 		this.namePlayer=namePlayer;
 		operations=new operationRandom();
+		nodeName=new NameTree();
+		scoreTree=new ScoreTree();
 	}
 	
 	public void getOperationRandom() {
@@ -111,12 +121,39 @@ public class TreeController {
 		return Op;
 	}
 	
+	/**
+	 * guarda a los jugadores en los dos tipos de arreglos 
+	 */
+	
 	public void addPlayerToTreeNAme() {
-		NameTree nodeName=new NameTree();
+		
 		nodeName.add(player.getUsername(), player);
 		
-		
-		
+		scoreTree.add(player.getScore(), player.getUsername());
 	}
 	
+	public void salveJavaByteCodeRootName(){
+		try {
+			File ref = new File("jbcRootName.temp");
+			 FileOutputStream fos = new FileOutputStream(ref);
+			 ObjectOutputStream oos = new ObjectOutputStream(fos);
+			 oos.writeObject(nodeName.getRoot());
+			 oos.close();	
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
+		 
+	}
+	public void salveJavaByteCodeRootScore(){
+		try {
+			File ref = new File("jbcRootScore.temp");
+			 FileOutputStream fos = new FileOutputStream(ref);
+			 ObjectOutputStream oos = new ObjectOutputStream(fos);
+			 oos.writeObject(nodeName.getRoot());
+			 oos.close();	
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
+		 
+	}
 }

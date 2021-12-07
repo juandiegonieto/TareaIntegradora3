@@ -45,6 +45,7 @@ public class NodeScore {
 	public ArrayList<Player> getValue() {
 		return value;
 	}
+
 	public void setValue(ArrayList<Player> value) {
 		this.value = value;
 	}

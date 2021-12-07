@@ -1,14 +1,20 @@
 package model;
 
+import java.util.ArrayList;
+
 public class ScoreTree {
 
 	private NodeScore root;
+	private String namePlayer;
 	
-	public void add(int key) {
+	public void add(int key,String namePlayer) {
+		this.namePlayer=namePlayer;
 		if (root == null) {
 			root = new NodeScore(key);
-		} else {
+		} else if(ssearchPunctuation(key)==false){
 			root.insert(key);
+		}else {
+			addPunctuation(triggerSearch(key));
 		}
 	}
 
@@ -136,5 +142,20 @@ public class ScoreTree {
 		this.root = root;
 	}
 
+	
+	public boolean ssearchPunctuation(int key) {
+		boolean found=false;
+		if(triggerSearch( key)!=null) {
+			found=true;
+		}
+		return found;
+	}
+	
+	public void addPunctuation(NodeScore nodeScore) {
+		Player player=new Player(namePlayer);
+		ArrayList<Player> value=nodeScore.getValue();
+		value.add(player);
+		nodeScore.setValue(value);
+	}
 	
 }
