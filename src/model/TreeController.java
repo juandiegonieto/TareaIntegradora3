@@ -1,5 +1,10 @@
 package model;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 public class TreeController {
 
 	 /**
@@ -15,6 +20,9 @@ public class TreeController {
 	private String namePlayer;
 	private operationRandom operations;
 	private TotalQuestionnaireTime time;
+	
+	private NameTree nodeName;
+	private ScoreTree scoreTree;
 	
 	public TreeController(String namePlayer) {
 		super();
@@ -85,7 +93,7 @@ public class TreeController {
 	/**
 	 * este motdo va a regresar un String en el cual estan todas las respuestas para ponerla en los bottom 
 	 * la respuesta correcta se encuentra en la primara posiscion 
-	 * esta sepasrado por "-" para hacerle Split
+	 * esta separado por "-" para hacerle Split
 	 * 
 	 * 
 	 * 
@@ -117,6 +125,31 @@ public class TreeController {
 		
 		
 		
+	}
+	
+	public void salveJavaByteCodeRootName(){
+		try {
+			File ref = new File("jbcRootName.temp");
+			 FileOutputStream fos = new FileOutputStream(ref);
+			 ObjectOutputStream oos = new ObjectOutputStream(fos);
+			 oos.writeObject(nodeName.getRoot());
+			 oos.close();	
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
+		 
+	}
+	public void salveJavaByteCodeRootScore(){
+		try {
+			File ref = new File("jbcRootScore.temp");
+			 FileOutputStream fos = new FileOutputStream(ref);
+			 ObjectOutputStream oos = new ObjectOutputStream(fos);
+			 oos.writeObject(nodeName.getRoot());
+			 oos.close();	
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
+		 
 	}
 	
 }
