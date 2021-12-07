@@ -127,5 +127,15 @@ public class NameTree {
 		
 		return current;
 	}
+
+	public NodeName getRoot() {
+		return root;
+	}
+
+	public void setRoot(NodeName root) {
+		this.root = root;
+	}
+	
+	
 	
 }

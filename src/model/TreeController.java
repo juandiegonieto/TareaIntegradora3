@@ -112,8 +112,11 @@ public class TreeController {
 	}
 	
 	public void addPlayerToTreeNAme() {
-		NodeName p=new NodeName(player.getUsername(), player);
-		p.insert(namePlayer, player);
+		NameTree nodeName=new NameTree();
+		nodeName.add(player.getUsername(), player);
+		
+		
+		
 	}
 	
 }

@@ -128,5 +128,13 @@ public class ScoreTree {
 		return current;
 	}
 
+	public NodeScore getRoot() {
+		return root;
+	}
+
+	public void setRoot(NodeScore root) {
+		this.root = root;
+	}
+
 	
 }
