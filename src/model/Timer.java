@@ -7,6 +7,10 @@ public class Timer extends Thread{
 	//Reference
 	private QuestionsWindow questionsWindow;
 	
+	/**
+	 * hilo de cuenta de ventana de inicio
+	 * @param questionsWindow
+	 */
 	public Timer(QuestionsWindow questionsWindow) {
 		this.questionsWindow = questionsWindow;
 	}
